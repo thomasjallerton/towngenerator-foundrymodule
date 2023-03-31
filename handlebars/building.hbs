@@ -1,0 +1,67 @@
+<div>
+    {{data.description}}
+    {{#if (towngenHasOpenStatus data.openStatus)}}
+    <br/>{{towngenCapitalizeEnum data.openStatus}} ({{data.openingTimes.openHour}}:00 - {{data.openingTimes.closeHour}}:00)
+    {{/if}}
+    <p>{{towngenFormatPeople data.subLocationsSummary.numberOfPeople}} currently here.</p>
+    <div class="fantasy-town-generator-action-row">
+        {{#if (towngenNotEmpty data.stock)}}
+            <button name="items" id="fantasy-town-generator-building-items" data-id="{{data.id}}" data-stock="{{towngenJson data.stock}}">Items</button>
+        {{/if}}
+        {{#if (towngenNotEmpty data.services)}}
+            <button name="services" id="fantasy-town-generator-building-services" data-id="{{data.id}}" data-services="{{towngenJson data.services}}">Services</button>
+        {{/if}}
+        {{#if (towngenIsGm)}}
+            <button name="start event" id="fantasy-town-generator-building-start-event" data-id="{{data.id}}">Start Event</button>
+        {{/if}}
+        {{#if (towngenIsGm)}}
+            {{#if data.isPlayerCurrentLocation}}
+                <button name="set location" id="fantasy-town-generator-building-set-current-location">Clear Location</button>
+            {{else}}
+                <button name="set location" id="fantasy-town-generator-building-set-current-location" data-new-location="{{data.id}}">Set Location</button>
+            {{/if}}
+        {{/if}}
+        <button
+            name="building notes"
+            id="fantasy-town-generator-building-notes"
+            data-id="{{data.id}}"
+            data-name="{{data.name}}"
+            data-notes="{{data.notes}}"
+            data-public-notes="{{data.publicNotes}}"
+            data-public-can-write-notes="{{data.publicCanWriteNotes}}">
+            Notes
+        </button>
+        {{#if (towngenIsGm)}}
+            <button name="favourite building" id="fantasy-town-generator-building-favourite" data-id="{{data.id}}" data-favourite="{{data.favourite}}">
+                {{#if data.favourite}}
+                    Unfavourite
+                {{else}}
+                    Favourite
+                {{/if}}
+            </button>
+        {{/if}}
+    </div>
+    <section class="fantasy-town-generator-sub-locations-container">
+        {{#each data.subLocationsSummary.subLocations}}
+                <h4><b>{{this.name}}</b></h4>
+                <div class="fantasy-town-generator-summary-list">
+                    {{#if (towngenNotEmpty this.currentPeople)}}
+                        {{#each this.currentPeople}}
+                            <button
+                                name="{{this.firstName}} {{this.lastName}}"
+                                id="fantasy-town-generator-building-person"
+                                class="fantasy-town-generator-summary-button"
+                                data-time="{{../../data.time}}"
+                                data-person="{{towngenJson this}}">
+                                <i class="fas fa-user"></i>
+                                {{this.firstName}} {{this.lastName}}
+                                <i class="fas {{towngenIconForStatus this.currentStatus}} fantasy-town-generator-summary-row-end"></i>
+                            </button>
+                        {{/each}}
+                    {{else}}
+                        Empty
+                    {{/if}}
+                </div>
+        {{/each}}
+    </section>
+</div>

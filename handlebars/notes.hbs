@@ -1,0 +1,27 @@
+<form>
+<label for="settlementId">Public Notes</label>
+<br/>
+<div class="form-fields">
+  <textarea
+    name="publicNotes"
+    class="fantasy-town-generator-importer-textarea"
+    >{{publicNotes}}</textarea>
+</div>
+{{#if (towngenIsGm)}}
+<label for="settlementId">GM Notes</label>
+<br/>
+<div class="form-fields">
+  <textarea
+    name="notes"
+    class="fantasy-town-generator-importer-textarea"
+    >{{notes}}</textarea>
+</div>
+{{/if}}
+{{#if (towngenIsGm)}}
+<button type="submit" name="submit" value="submit">Save</button>
+{{else}}
+    {{#if publicCanWriteNotes}}
+    <button type="submit" name="submit" value="submit">Save</button>
+    {{/if}}
+{{/if}}
+</form>

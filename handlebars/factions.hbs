@@ -1,0 +1,16 @@
+<div class="fantasy-town-generator-summary-list">
+    {{#if (towngenNotEmpty data)}}
+        {{#each data}}
+            <button
+                name="{{this.name}}"
+                id="fantasy-town-generator-factions-faction"
+                class="fantasy-town-generator-summary-button"
+                data-faction="{{towngenJson this}}">
+                <i class="fas fa-user-group"></i>
+                {{this.name}}
+            </button>
+        {{/each}}
+    {{else}}
+        No Factions
+    {{/if}}
+</div>

@@ -1,0 +1,14 @@
+<div class="fantasy-town-generator-item-table">
+    <table>
+      <tr>
+        <th style="text-align:left">{{title}}</th>
+        <th style="text-align:left">Price</th>
+      </tr>
+      {{#each data}}
+        <tr>
+          <td>{{this.item}}</td>
+          <td>{{towngenPrice this.price}}</td>
+        </tr>
+      {{/each}}
+    </table>
+</div>

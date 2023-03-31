@@ -1,0 +1,20 @@
+{
+  "id": "fantasy-town-generator-import",
+  "title": "Fantasy Town Generator Importer",
+  "description": "Import map and building details exported by Fantasy Town Generator",
+  "authors": [
+    {
+      "name": "Thomas Allerton",
+      "discord": "random_towns#6778",
+      "email": "fantasytowngenerator@gmail.com"
+    }
+  ],
+  "version": "1.0.0",
+  "esmodules": ["importer.js"],
+  "styles": ["styles/fantasy-town-generator-importer.css"],
+  "socket": true,
+  "compatibility": {
+    "minimum": "9",
+    "verified": "10"
+  }
+}

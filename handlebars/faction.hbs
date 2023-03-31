@@ -1,0 +1,52 @@
+<div>
+    <p>{{data.description}}</p>
+    <p>{{data.goals}}</p>
+    <p>{{data.goalCompletionMethods}}</p>
+    {{#if data.operatesSecretly}}
+        <p>Operates secretly.</p>
+    {{/if}}
+    <section>
+        <h4><b>Leaders</b></h4>
+        <div class="fantasy-town-generator-summary-list">
+            {{#if (towngenNotEmpty data.leaders)}}
+                {{#each data.leaders}}
+                    <button
+                        name="{{this.firstName}} {{this.lastName}}"
+                        id="fantasy-town-generator-faction-person"
+                        class="fantasy-town-generator-summary-button"
+                        data-time="{{../data.time}}"
+                        data-person="{{towngenJson this}}">
+                        <i class="fas fa-user"></i>
+                        {{this.firstName}} {{this.lastName}}
+                    </button>
+                {{/each}}
+            {{else}}
+                No Leaders
+            {{/if}}
+        </div>
+    </section>
+    <section>
+            <h4><b>Members</b></h4>
+            <div class="fantasy-town-generator-summary-list">
+                {{#if (towngenNotEmpty data.members)}}
+                    {{#each data.members}}
+                        <button
+                            name="{{this.firstName}} {{this.lastName}}"
+                            id="fantasy-town-generator-faction-person"
+                            class="fantasy-town-generator-summary-button"
+                            data-time="{{../data.time}}"
+                            data-person="{{towngenJson this}}">
+                            <i class="fas fa-user"></i>
+                            {{this.firstName}} {{this.lastName}}
+                        </button>
+                    {{/each}}
+                {{else}}
+                    No Members
+                {{/if}}
+            </div>
+        </section>
+    {{#if (towngenNotEmpty data.notes)}}
+        <h5>FTG Notes</h5>
+        <br/>{{data.notes}}
+    {{/if}}
+</div>

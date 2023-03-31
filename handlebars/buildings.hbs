@@ -1,0 +1,16 @@
+<div class="fantasy-town-generator-summary-list">
+    {{#if (towngenNotEmpty data)}}
+        {{#each data}}
+            <button
+                name="{{this.name}}"
+                id="fantasy-town-generator-favourite-building"
+                class="fantasy-town-generator-summary-button"
+                data-building="{{towngenJson this}}">
+                <i class="fas fa-building"></i>
+                {{this.name}}
+            </button>
+        {{/each}}
+    {{else}}
+        No Favourite Buildings
+    {{/if}}
+</div>

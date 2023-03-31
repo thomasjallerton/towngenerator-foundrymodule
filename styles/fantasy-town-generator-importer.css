@@ -1,0 +1,65 @@
+
+.fantasy-town-generator-iframe {
+    z-index: var(--z-index-canvas) + 1;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+}
+
+.fantasy-town-generator-ui-hide {
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.fantasy-town-generator-action-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 4px;
+    margin: 8px 0;
+}
+
+.fantasy-town-generator-item-table {
+    max-height: 600px;
+}
+
+.fantasy-town-generator-summary-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    margin-bottom: 8px;
+}
+
+.fantasy-town-generator-summary-button {
+    width: 49%;
+    display: flex;
+    gap: 4px;
+    align-items: center;
+    padding: 0 4px;
+}
+
+.fantasy-town-generator-importer-textarea {
+    height: 300px;
+}
+
+.fantasy-town-generator-sub-locations-container {
+    max-height: 500px;
+}
+
+.fantasy-town-generator-stats-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    margin-bottom: 8px;
+}
+
+.fantasy-town-generator-stat {
+    width: 32%;
+}
+
+.fantasy-town-generator-summary-row-end {
+    margin-left: auto;
+}

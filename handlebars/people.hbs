@@ -1,0 +1,17 @@
+<div class="fantasy-town-generator-summary-list">
+    {{#if (towngenNotEmpty data)}}
+        {{#each data}}
+            <button
+                name="{{this.name}}"
+                id="fantasy-town-generator-favourite-person"
+                class="fantasy-town-generator-summary-button"
+                data-time="{{../time}}"
+                data-person="{{towngenJson this}}">
+                <i class="fas fa-user"></i>
+                {{this.firstName}} {{this.lastName}}
+            </button>
+        {{/each}}
+    {{else}}
+        No Favourite People
+    {{/if}}
+</div>
