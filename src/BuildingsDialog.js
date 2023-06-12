@@ -17,16 +17,15 @@ class BuildingsDialog extends Application {
         return options;
     }
 
-    constructor(options) {
-        super(options);
-        this.updateListener = listenForUpdates(FtgEvent.PEOPLE_UPDATE, ({ data }) => {
-            stopListening(this.updateListener);
+    activateListeners(html) {
+        super.activateListeners(html);
+        listenForUpdates(FtgEvent.BUILDINGS_UPDATE, 'buildings', ({ data }) => {
             notifyBuildings(data)
         })
     }
 
     close(options) {
-        stopListening(this.updateListener);
+        stopListening(FtgEvent.BUILDINGS_UPDATE, 'buildings');
         return super.close(options);
     }
 

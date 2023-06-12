@@ -59,7 +59,14 @@ export const FtgEvent = {
     BUILDINGS_UPDATE: 'BUILDINGS_UPDATE',
 }
 
-export const listenForUpdates = (type, callback) => {
+/** Tracks all active listeners, to ensure that a listener for a dialog is only created once */
+const allListeners = {};
+
+const createListenerId = (type, id) => `${type}-${id}`;
+
+export const listenForUpdates = (type, id, callback) => {
+    stopListening(type, id);
+
     const listener = event => {
         if (event.origin === FANTASY_TOWN_GENERATOR_ORIGIN) {
             const parsedData = JSON.parse(event.data)
@@ -69,10 +76,13 @@ export const listenForUpdates = (type, callback) => {
         }
     }
 
+    allListeners[createListenerId(type, id)] = listener;
     window.addEventListener("message", listener);
-    return listener;
 }
 
-export const stopListening = listener => {
-    window.removeEventListener("message", listener);
+export const stopListening = (type, id) => {
+    const listener = allListeners[createListenerId(type, id)];
+    if (listener) {
+        window.removeEventListener("message", listener);
+    }
 }

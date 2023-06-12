@@ -80,7 +80,6 @@ Handlebars.registerHelper('towngenIconForStatus', function (status) {
     return '';
 });
 
-
 class BuildingDialog extends Application {
     static get defaultOptions() {
         const options = super.defaultOptions;
@@ -89,32 +88,31 @@ class BuildingDialog extends Application {
         return options;
     }
 
-    constructor(options) {
-        super(options);
-        this.updateListener = listenForUpdates(FtgEvent.BUILDING_UPDATE, ({ data }) => {
-            if (data.id === options.data.id) {
-                stopListening(this.updateListener);
+    activateListeners(html) {
+        super.activateListeners(html);
+        listenForUpdates(FtgEvent.BUILDING_UPDATE, this.options.data.id,({data}) => {
+            if (data.id === this.options.data.id) {
                 notifyBuilding(data);
             }
-        })
-        this.newLocationListener = listenForUpdates(FtgEvent.NEW_PLAYER_CURRENT_LOCATION, newBuildingLocation => {
-            if (newBuildingLocation === options.data.id || options.data.isPlayerCurrentLocation) {
-                stopListening(this.updateListener);
+        });
+        listenForUpdates(FtgEvent.NEW_PLAYER_CURRENT_LOCATION, this.options.data.id, newBuildingLocation => {
+            if (newBuildingLocation === this.options.data.id || this.options.data.isPlayerCurrentLocation) {
                 notifyBuilding({
-                    ...options.data,
-                    isPlayerCurrentLocation: newBuildingLocation === options.data.id
+                    ...this.options.data,
+                    isPlayerCurrentLocation: newBuildingLocation === this.options.data.id
                 });
             }
-        })
+        });
     }
 
     close(options) {
-        stopListening(this.updateListener);
-        stopListening(this.newLocationListener);
+        stopListening(FtgEvent.BUILDING_UPDATE, this.options.data.id);
+        stopListening(FtgEvent.NEW_PLAYER_CURRENT_LOCATION, this.options.data.id);
         return super.close(options);
     }
 
     getData(options) {
+        this.options.data = options.data;
         return {
             data: options.data
         };

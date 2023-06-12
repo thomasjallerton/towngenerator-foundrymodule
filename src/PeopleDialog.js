@@ -17,16 +17,15 @@ class PeopleDialog extends Application {
         return options;
     }
 
-    constructor(options) {
-        super(options);
-        this.updateListener = listenForUpdates(FtgEvent.PEOPLE_UPDATE, ({ data }) => {
-            stopListening(this.updateListener);
+    activateListeners(html) {
+        super.activateListeners(html);
+        listenForUpdates(FtgEvent.PEOPLE_UPDATE, 'people', ({ data }) => {
             notifyPeople(data);
         })
     }
 
     close(options) {
-        stopListening(this.updateListener);
+        stopListening(FtgEvent.PEOPLE_UPDATE, 'people');
         return super.close(options);
     }
 

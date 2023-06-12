@@ -70,18 +70,17 @@ class PersonDialog extends Application {
         return options;
     }
 
-    constructor(options) {
-        super(options);
-        this.updateListener = listenForUpdates(FtgEvent.PERSON_UPDATE, ({ data }) => {
+    activateListeners(html) {
+        super.activateListeners(html);
+        listenForUpdates(FtgEvent.PERSON_UPDATE, options.data.id, ({ data }) => {
             if (data.id === options.data.id) {
-                stopListening(this.updateListener);
                 notifyPerson(data, this.options.data.time);
             }
-        })
+        });
     }
 
     close(options) {
-        stopListening(this.updateListener);
+        stopListening(FtgEvent.PERSON_UPDATE, this.options.data.id);
         return super.close(options);
     }
 
