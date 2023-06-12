@@ -70,6 +70,7 @@ window.addEventListener(
             // properly
             if (parsedData.type === FtgEvent.MOUSE_MOVE) {
                 window.dispatchEvent(new MouseEvent('mousemove', parsedData.data));
+                window.dispatchEvent(new PointerEvent('pointermove', parsedData.data));
             }
         }
     }
