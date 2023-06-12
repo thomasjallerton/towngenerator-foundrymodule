@@ -9,12 +9,12 @@
       "email": "fantasytowngenerator@gmail.com"
     }
   ],
-  "version": "1.0.0",
+  "version": "1.0.1",
   "esmodules": ["importer.js"],
   "styles": ["styles/fantasy-town-generator-importer.css"],
   "socket": true,
   "compatibility": {
     "minimum": "9",
-    "verified": "10"
+    "verified": "11"
   }
 }

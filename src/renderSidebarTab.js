@@ -2,7 +2,7 @@ import {ImporterForm} from "./ImporterForm.js";
 
 
 export function renderSidebarTab(app, html) {
-    if (app.options.id === "scenes" && game.user.isGM) {
+    if ((app.options.id === "scenes" || app instanceof SceneDirectory) && game.user.isGM) {
         let button = $("<div class='header-actions action-buttons flexrow'><button>Import from FTG</button></div>");
 
         button.click(async () => {
