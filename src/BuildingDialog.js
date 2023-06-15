@@ -112,7 +112,6 @@ class BuildingDialog extends Application {
     }
 
     getData(options) {
-        this.options.data = options.data;
         return {
             data: options.data
         };

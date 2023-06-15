@@ -57,6 +57,11 @@ export const FtgEvent = {
      * Contains the stateId and the updated building details.
      */
     BUILDINGS_UPDATE: 'BUILDINGS_UPDATE',
+    /**
+     * A district was clicked.
+     * Contains the full district details.
+     */
+    DISTRICT: 'DISTRICT',
 }
 
 /** Tracks all active listeners, to ensure that a listener for a dialog is only created once */

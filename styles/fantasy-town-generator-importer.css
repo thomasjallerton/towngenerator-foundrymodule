@@ -63,3 +63,7 @@
 .fantasy-town-generator-summary-row-end {
     margin-left: auto;
 }
+
+.fantasy-town-generator-whitespace-pre {
+    white-space: pre-wrap;
+}

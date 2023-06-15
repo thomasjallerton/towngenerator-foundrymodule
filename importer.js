@@ -7,6 +7,7 @@ import {notifyPeople} from "./src/PeopleDialog.js";
 import {FANTASY_TOWN_GENERATOR_ORIGIN, SOCKET_EVENT} from "./src/constants.js";
 import {ClientNotifications, notifyFTG, notifyOtherClients} from "./src/notifier.js";
 import {FtgEvent} from "./src/listener.js";
+import {notifyDistrict} from "./src/DistrictDialog.js";
 
 Hooks.on("renderSidebarTab", renderSidebarTab);
 Hooks.on("canvasInit", canvasInit);
@@ -65,6 +66,8 @@ window.addEventListener(
             } else if (parsedData.type === FtgEvent.BUILDINGS_UPDATE) {
                 const { stateId } = parsedData.data;
                 notifyOtherClients(ClientNotifications.BUILDINGS_UPDATE,{ stateId });
+            } else if (parsedData.type === FtgEvent.DISTRICT) {
+                notifyDistrict(parsedData.data);
             }
             // Capture mouse move events from the fantasy-town-generator iframe so that drag controls still work
             // properly
