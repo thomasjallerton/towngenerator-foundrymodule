@@ -1,6 +1,6 @@
 <div>
     <p>
-    {{data.age}} year old {{towngenLowercaseEnum data.gender}}
+    {{data.age}} year old {{data.gender}}
     {{#if (towngenNotEmpty data.job)}}
         {{towngenLowercaseEnum data.race}} {{towngenLowercaseEnum data.job.title}}.
     {{else}}
@@ -33,16 +33,9 @@
     </div>
     <section>
         <h3>Appearance</h3>
-        {{#with data.appearance.hair}}
-        {{#if (towngenIsBald hairLength)}}
-            Is bald.
-        {{else}}
-            <p>Has {{towngenLowercaseEnum hairLength}}, {{towngenLowercaseEnum hairTexture}}, {{towngenLowercaseEnum hairColour}} hair.</p>
-        {{/if}}
-        {{/with}}
-        <p>Has {{towngenLowercaseEnum data.appearance.eyeColour}} eyes.</p>
-        <p>Has {{towngenSkinTone data.appearance.skinTone}} skin.</p>
-        <p>Stands {{data.appearance.heightCm}}cm tall ({{towngenFeet data.appearance.heightCm}}) and has {{towngenAOrAn data.appearance.build}} {{towngenLowercaseEnum data.appearance.build}} build.</p>
+        {{#each data.appearanceLines}}
+            <p>{{this}}</p>
+        {{/each}}
     </section>
     <section>
         <h3>Personality</h3>
