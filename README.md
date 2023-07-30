@@ -34,6 +34,8 @@ This module is in beta. Clone the project, and copy into your foundry modules fo
         module.json
         *
 ```
+NOTE: Ensure that the folder name under `/modules/` is `fantasy-town-generator-import`, otherwise it won't show up in Foundry.
+You may have to rename the folder.
 
 e.g. on my windows install it goes in the `%AppData%/Local/FoundryVTT/Data/modules` directory. More information
 [here](https://foundryvtt.com/article/module-development/).
