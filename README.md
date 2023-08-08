@@ -27,7 +27,7 @@ Buildings and people:
 
 ### Option 1 (Preferred) - Download via Foundry
 Using this option will allow you to download updates through foundry.
-First, open FoundryVTT, and navigate to the 'Add-On Modules' view. Then, click the 'install module' button. In the popup modal, enter
+First, open FoundryVTT, and navigate to the 'Add-On Modules' view. Then, click the 'install module' button. In the 'Manifest URL' field, enter
 ```
 https://raw.githubusercontent.com/thomasjallerton/towngenerator-foundrymodule/main/module.json
 ```
@@ -41,7 +41,7 @@ Enter the path to json:
 
 
 ### Option 2 - Manual download
-This module is in beta. Clone the project, and copy into your foundry modules folder. The structure should look like:
+Clone the project, and copy into your foundry modules folder. The structure should look like:
 
 ```
 {userData}/Data/modules/  
