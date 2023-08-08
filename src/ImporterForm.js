@@ -45,4 +45,11 @@ export class ImporterForm extends FormApplication {
         return Promise.reject("Invalid form data")
     }
 
+    getData(options) {
+        return {
+            origin: window.origin
+        }
+    }
+
+
 }

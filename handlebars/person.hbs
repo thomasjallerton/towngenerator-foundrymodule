@@ -37,7 +37,7 @@
             <p>{{this}}</p>
         {{/each}}
     </section>
-    <section>
+    <section style="max-width:600px">
         <h3>Personality</h3>
         {{#if (towngenNotEmpty data.personality)}}
             <p>{{data.personality}}</p>
@@ -51,8 +51,8 @@
         {{#if (towngenNotEmpty data.interactionMannerism)}}
             <p>{{data.interactionMannerism}}</p>
         {{/if}}
-        {{#if (towngenNotEmpty data.religion)}}
-            <p>{{towngenCapitalizePronoun data.gender}} worships {{data.religion}}.</p>
+        {{#if (towngenNotEmpty data.religionFormat)}}
+            <p>{{data.religionFormat}}</p>
         {{/if}}
         {{#if (towngenNotEmpty data.goal)}}
             <p>{{data.goal}}</p>

@@ -46,20 +46,11 @@ Handlebars.registerHelper('towngenSkinTone', function (value) {
     return '';
 });
 
-Handlebars.registerHelper('towngenCapitalizePronoun', function (gender) {
-    return gender === 'MALE' ? 'He' : 'She';
-});
-
 Handlebars.registerHelper('towngenFeet', function (cm) {
     const realFeet = ((cm * 0.393700) / 12);
     const feet = Math.floor(realFeet);
     const inches = Math.round((realFeet - feet) * 12);
     return `${feet}′ ${inches}″`;
-});
-
-Handlebars.registerHelper('towngenPersonality', function (person) {
-    const rng = () => Math.random();
-    return formatCoreValues(person.coreValues, person.gender, rng);
 });
 
 class PersonDialog extends Application {
@@ -72,8 +63,8 @@ class PersonDialog extends Application {
 
     activateListeners(html) {
         super.activateListeners(html);
-        listenForUpdates(FtgEvent.PERSON_UPDATE, options.data.id, ({ data }) => {
-            if (data.id === options.data.id) {
+        listenForUpdates(FtgEvent.PERSON_UPDATE, this.options.data.id, ({ data }) => {
+            if (data.id === this.options.data.id) {
                 notifyPerson(data, this.options.data.time);
             }
         });
