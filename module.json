@@ -9,13 +9,13 @@
       "email": "fantasytowngenerator@gmail.com"
     }
   ],
-  "version": "1.2.2",
+  "version": "1.2.3",
   "esmodules": ["importer.js"],
   "styles": ["styles/fantasy-town-generator-importer.css"],
   "socket": true,
   "compatibility": {
     "minimum": "9",
-    "verified": "11"
+    "verified": "12"
   },
   "manifest": "https://raw.githubusercontent.com/thomasjallerton/towngenerator-foundrymodule/main/module.json",
   "download": "https://github.com/thomasjallerton/towngenerator-foundrymodule/archive/refs/heads/master.zip"

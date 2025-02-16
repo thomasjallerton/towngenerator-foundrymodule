@@ -63,34 +63,46 @@ Activate the module in FoundryVTT.
 3. Enable 'Fantasy Town Generator Importer'.
 4. Save and reload.
 
-## Export and Import
+## Importing a settlement
 
-### Fantasy Town Generator Prerequisites
+Ensure you have the module installed before doing this.
 
-1. Be a premium user.
-2. Go to your premium settings.
-3. Select the Foundry VTT tab.
-4. Add the HTTP origin you use to connect to Foundry VTT. If you run Foundry locally,
-this is probably `http://localhost:30000`.
+#### 0. Set the FoundryVTT allowed origins
 
-### Export a settlement
+In the premium settings, go to the Foundry VTT tab. Here you need to add the URL origin(s) that you use to access
+Foundry. To determine what this origin is, open Foundry, and press the "Import from FTG" button on the Scenes menu. A
+dialog will appear highlighting the origin:
 
-1. Navigate to the settlement you want to export in [Fantasy Town Generator](https://www.fantasytowngenerator.com).
-2. Ensure the settlement supports public access (if you want your players to be able to see the map in Foundry),
-edit this in the settlement specific settings (settings cog above settlement name -> settlement specific settings).
-3. Press the download button above the settlement name.
-4. Select 'Export to FoundryVTT'
-5. Copy the export code to your clipboard.
+![import settlement foundry](docs/allowed-origin-foundry.png)
 
-### Import a settlement
+Then, just add this to the list in the premium settings:
 
-1. Open your world in Foundry with the module active as the game master.
-2. Navigate to the 'Scenes' tab.
-3. Click 'Import from FTG'.
-4. Paste the code copied in the previous step.
-5. This will have created a new scene (or check the Foundry console for errors)
-6. Like normal, selecting 'View scene' will open it only for you, and 'Activate' will open it for your players.
-7. Once either of those are pressed, you may be prompted to sign in - do so (your players won't see this &
-don't need an account).
-8. Done!
+![foundry allowed origin](docs/allowed-origin-ftg.png)
 
+This step just needs to be done once. If you can see the map, but can't interact with anything, then that usually means
+that this has been set incorrectly. Double-check the origin in foundry as described above.
+
+#### 1. Allow public access for the settlement
+
+For the players to see the settlement, you need to enable public access (any level is fine).
+
+#### 2. Export from FTG
+
+Press the Export to Foundry VTT button from the settlement:
+
+![foundry allowed origin](docs/export-menu.png)
+
+If you've done the above steps, you'll see:
+
+![export to foundry](docs/export-to-foundry.png)
+
+Press the copy to clipboard button.
+
+#### 3. Import into Foundry VTT
+
+Press the "Import from FTG" button on the Scenes menu. A dialog will appear - paste the copied import config into the
+text area:
+
+![import in foundry](docs/import-in-foundry.png)
+
+Press import, and a new scene will be created. When you navigate to this scene, you should see a fully interactable map.

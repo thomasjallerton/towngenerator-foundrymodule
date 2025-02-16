@@ -1,28 +1,29 @@
 <div>
     <p>
-    {{data.age}} year old {{data.gender}}
-    {{#if (towngenNotEmpty data.job)}}
-        {{towngenLowercaseEnum data.race}} {{towngenLowercaseEnum data.job.title}}.
-    {{else}}
-        {{towngenLowercaseEnum data.race}}.
-    {{/if}}
+        {{data.age}} year old {{data.gender}}
+        {{#if (towngenNotEmpty data.job)}}
+            {{towngenLowercaseEnum data.race}} {{towngenLowercaseEnum data.job.title}}.
+        {{else}}
+            {{towngenLowercaseEnum data.race}}.
+        {{/if}}
     </p>
     {{#if (towngenNotEmpty data.currentStatus)}}
         <p>Currently {{towngenLowercaseEnum data.currentStatus}}.</p>
     {{/if}}
     <div class="fantasy-town-generator-action-row">
         <button
-            name="building notes"
-            id="fantasy-town-generator-person-notes"
-            data-id="{{data.id}}"
-            data-name="{{data.name}}"
-            data-notes="{{data.notes}}"
-            data-public-notes="{{data.publicNotes}}"
-            data-public-can-write-notes="{{data.publicCanWriteNotes}}">
+                name="building notes"
+                id="fantasy-town-generator-person-notes"
+                data-id="{{data.id}}"
+                data-name="{{data.name}}"
+                data-notes="{{data.notes}}"
+                data-public-notes="{{data.publicNotes}}"
+                data-public-can-write-notes="{{data.publicCanWriteNotes}}">
             Notes
         </button>
         {{#if (towngenIsGm)}}
-            <button name="favourite person" id="fantasy-town-generator-person-favourite" data-id="{{data.id}}" data-favourite="{{data.favourite}}">
+            <button name="favourite person" id="fantasy-town-generator-person-favourite" data-id="{{data.id}}"
+                    data-favourite="{{data.favourite}}">
                 {{#if data.favourite}}
                     Unfavourite
                 {{else}}
@@ -37,36 +38,40 @@
             <p>{{this}}</p>
         {{/each}}
     </section>
-    <section style="max-width:600px">
-        <h3>Personality</h3>
-        {{#if (towngenNotEmpty data.personality)}}
-            <p>{{data.personality}}</p>
-        {{/if}}
-        {{#if (towngenNotEmpty data.customPersonality)}}
-            <p>{{data.customPersonality}}</p>
-        {{/if}}
-        {{#if (towngenNotEmpty data.hobbies)}}
-            <p>{{data.hobbies}}</p>
-        {{/if}}
-        {{#if (towngenNotEmpty data.interactionMannerism)}}
-            <p>{{data.interactionMannerism}}</p>
-        {{/if}}
-        {{#if (towngenNotEmpty data.religionFormat)}}
-            <p>{{data.religionFormat}}</p>
-        {{/if}}
-        {{#if (towngenNotEmpty data.goal)}}
-            <p>{{data.goal}}</p>
-        {{/if}}
-    </section>
-    <section>
-        <h3>Stats</h3>
-        <div class="fantasy-town-generator-stats-container">
-            {{#each data.stats}}
-                <div class="fantasy-town-generator-stat">
-                    <b>{{this.name}}</b>
-                    <p>{{this.value}}</p>
-                </div>
-            {{/each}}
-        </div>
-    </section>
+    {{#if (towngenNotEmpty data.personality)}}
+        <section style="max-width:600px">
+            <h3>Personality</h3>
+            {{#if (towngenNotEmpty data.personality)}}
+                <p>{{data.personality}}</p>
+            {{/if}}
+            {{#if (towngenNotEmpty data.customPersonality)}}
+                <p>{{data.customPersonality}}</p>
+            {{/if}}
+            {{#if (towngenNotEmpty data.hobbies)}}
+                <p>{{data.hobbies}}</p>
+            {{/if}}
+            {{#if (towngenNotEmpty data.interactionMannerism)}}
+                <p>{{data.interactionMannerism}}</p>
+            {{/if}}
+            {{#if (towngenNotEmpty data.religionFormat)}}
+                <p>{{data.religionFormat}}</p>
+            {{/if}}
+            {{#if (towngenNotEmpty data.goal)}}
+                <p>{{data.goal}}</p>
+            {{/if}}
+        </section>
+    {{/if}}
+    {{#if (towngenNotEmpty data.stats) }}
+        <section>
+            <h3>Stats</h3>
+            <div class="fantasy-town-generator-stats-container">
+                {{#each data.stats}}
+                    <div class="fantasy-town-generator-stat">
+                        <b>{{this.name}}</b>
+                        <p>{{this.value}}</p>
+                    </div>
+                {{/each}}
+            </div>
+        </section>
+    {{/if}}
 </div>
