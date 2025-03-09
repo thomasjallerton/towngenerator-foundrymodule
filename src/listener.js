@@ -62,6 +62,21 @@ export const FtgEvent = {
      * Contains the full district details.
      */
     DISTRICT: 'DISTRICT',
+    /**
+     * A pin was clicked.
+     * Contains the full pin details.
+     */
+    PIN: 'PIN',
+    /**
+     * A public pin was updated.
+     * Contains the full pin details.
+     */
+    PIN_UPDATED: 'PIN_UPDATED',
+    /**
+     * A public pin was deleted.
+     * Contains the pin id.
+     */
+    PIN_DELETED: 'PIN_DELETED',
 }
 
 /** Tracks all active listeners, to ensure that a listener for a dialog is only created once */

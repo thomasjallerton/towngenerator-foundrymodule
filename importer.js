@@ -33,6 +33,12 @@ Hooks.on("init", () => {
         } else if (type === ClientNotifications.BUILDINGS_UPDATE) {
             // { stateId } = data
             notifyFTG("UPDATE_BUILDINGS", data)
+        } else if (type === ClientNotifications.PIN_UPDATED) {
+            // data = FTG Pin
+            notifyFTG("PIN_UPDATED", data)
+        } else if (type === ClientNotifications.PIN_DELETED) {
+            // data = pinId (number)
+            notifyFTG("PIN_DELETED", data)
         }
     });
 });
@@ -68,7 +74,14 @@ window.addEventListener(
                 notifyOtherClients(ClientNotifications.BUILDINGS_UPDATE,{ stateId });
             } else if (parsedData.type === FtgEvent.DISTRICT) {
                 notifyDistrict(parsedData.data);
+            } else if (parsedData.type === FtgEvent.PIN_UPDATED) {
+                // parsedData.data is a pin
+                notifyOtherClients(ClientNotifications.PIN_UPDATED, parsedData.data);
+            } else if (parsedData.type === FtgEvent.PIN_DELETED) {
+                // parsedData.data is a pin id
+                notifyOtherClients(ClientNotifications.PIN_DELETED, parsedData.data);
             }
+
             // Capture mouse move events from the fantasy-town-generator iframe so that drag controls still work
             // properly
             if (parsedData.type === FtgEvent.MOUSE_MOVE) {

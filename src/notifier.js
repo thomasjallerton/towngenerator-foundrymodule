@@ -14,6 +14,8 @@ export const ClientNotifications = {
     PERSON_UPDATE: 'PERSON_UPDATE',
     PEOPLE_UPDATE: 'PERSON_UPDATE',
     BUILDINGS_UPDATE: 'BUILDINGS_UPDATE',
+    PIN_UPDATED: 'PIN_UPDATED',
+    PIN_DELETED: 'PIN_DELETED',
 }
 
 export const notifyOtherClients = (type, data) => {
