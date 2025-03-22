@@ -2,9 +2,12 @@ import {notifyPerson} from "./PersonDialog.js";
 import {notifyFTG} from "./notifier.js";
 import {FtgEvent, listenForUpdates, stopListening} from "./listener.js";
 import {notifyNotes} from "./NotesForm.js";
+import {getBuildingJournalSettings, JOURNAL_TYPE, journalButtons, openJournalAutomatically} from "./journalSettings.js";
 
-export const notifyBuilding = building => {
-    new BuildingDialog({id: 'building-' + building.id, data: building}).render(true);
+export const notifyBuilding = async building => {
+    const settings = await getBuildingJournalSettings(building.id)
+    new BuildingDialog({id: 'building-' + building.id, data: building, settings}).render(true);
+    await openJournalAutomatically(settings)
 }
 
 $(document).on('click', '#fantasy-town-generator-building-person', function () {
@@ -109,6 +112,12 @@ class BuildingDialog extends Application {
         stopListening(FtgEvent.BUILDING_UPDATE, this.options.data.id);
         stopListening(FtgEvent.NEW_PLAYER_CURRENT_LOCATION, this.options.data.id);
         return super.close(options);
+    }
+
+    _getHeaderButtons() {
+        const buttons = super._getHeaderButtons();
+        journalButtons(buttons, JOURNAL_TYPE.BUILDINGS, this)
+        return buttons;
     }
 
     getData(options) {

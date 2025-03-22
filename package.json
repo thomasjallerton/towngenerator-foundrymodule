@@ -7,7 +7,6 @@
   "license": "MIT",
   "private": false,
   "dependencies": {
-    "@league-of-foundry-developers/foundry-vtt-types": "^9.280.0",
     "@types/node": "^18.15.3",
     "handlebars": "^4.7.7"
   },
@@ -20,6 +19,7 @@
   },
   "devDependencies": {
     "eslint": ">=5.16.0",
-    "eslint-config-google": "^0.14.0"
+    "eslint-config-google": "^0.14.0",
+    "fvtt-types": "github:League-of-Foundry-Developers/foundry-vtt-types#main"
   }
 }

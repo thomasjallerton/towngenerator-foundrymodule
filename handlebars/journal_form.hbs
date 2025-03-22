@@ -1,0 +1,40 @@
+<form class="fantasy-town-generator-form">
+    <div class="form-fields">
+        <p>Drag and drop a journal to link.</p>
+        <div class="fantasy-town-generator-spaced-row form-fields">
+            <div class="fantasy-town-generator-journal-container">
+                {{#if (towngenNotEmpty journalName)}}
+                    Linked to: {{journalName}}
+                {{else}}
+                    Drop here
+                {{/if}}
+            </div>
+            {{#if (towngenNotEmpty journalName)}}
+                <button type="button" id="fantasy-town-generator-journal-unlink"
+                        class="fantasy-town-generator-small-button">
+                    <i class="fa-solid fa-link-slash"></i>
+                </button>
+            {{/if}}
+        </div>
+        {{#if (towngenNotEmpty journalName)}}
+            {{#if showPageOptions}}
+                <p class="fantasy-town-generator-spaced-row form-fields">
+                    <label for="pageUuid" class="ftg-flex-grow">Open at page:</label>
+                    <select name="pageUuid" id="pageUuid" class="ftg-flex-grow">
+                        {{#each pageOptions}}
+                            <option value="{{value}}" {{#if (eq value ../object.pageUuid)}}selected{{/if}}>
+                                {{label}}
+                            </option>
+                        {{/each}}
+                    </select>
+                </p>
+            {{/if}}
+            <p class="fantasy-town-generator-spaced-row form-fields">
+                <label for="openAutomatically" class="ftg-flex-grow">Open automatically:</label>
+                <input type="checkbox" id="openAutomatically" name="openAutomatically" class="ftg-flex-grow"
+                       value="openAutomatically" {{#if object.openAutomatically}}checked{{/if}} />
+            </p>
+        {{/if}}
+    </div>
+    <button type="submit" name="submit" value="submit">Save</button>
+</form>

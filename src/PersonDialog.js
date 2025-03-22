@@ -1,9 +1,12 @@
 import {notifyFTG} from "./notifier.js";
 import {FtgEvent, listenForUpdates, stopListening} from "./listener.js";
 import {notifyNotes} from "./NotesForm.js";
+import {getPersonJournalSettings, JOURNAL_TYPE, journalButtons, openJournalAutomatically} from "./journalSettings.js";
 
-export const notifyPerson = (person, time) => {
-    new PersonDialog({id: 'person-' + person.id, data: {...person, time}}).render(true);
+export const notifyPerson = async (person, time) => {
+    const settings = await getPersonJournalSettings(person.id)
+    new PersonDialog({id: 'person-' + person.id, data: {...person, time}, settings}).render(true);
+    await openJournalAutomatically(settings)
 }
 
 $(document).on('click', '#fantasy-town-generator-person-favourite', function () {
@@ -73,6 +76,12 @@ class PersonDialog extends Application {
     close(options) {
         stopListening(FtgEvent.PERSON_UPDATE, this.options.data.id);
         return super.close(options);
+    }
+
+    _getHeaderButtons() {
+        const buttons = super._getHeaderButtons();
+        journalButtons(buttons, JOURNAL_TYPE.PEOPLE, this)
+        return buttons;
     }
 
     getData(options) {

@@ -67,3 +67,53 @@
 .fantasy-town-generator-whitespace-pre {
     white-space: pre-wrap;
 }
+
+.fantasy-town-generator-spaced-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.fantasy-town-generator-row {
+    display: flex;
+    align-items: center;
+}
+
+.fantasy-town-generator-small-button {
+    max-width: max-content;
+    background: none;
+    border: none;
+}
+
+.fantasy-town-generator-small-button:focus,
+.fantasy-town-generator-small-button:hover {
+    background: none;
+    border: none;
+    box-shadow: none;
+    text-shadow: 0 0 8px var(--color-shadow-primary);
+}
+
+.fantasy-town-generator-journal-container {
+    flex-grow: 1;
+    height: var(--form-field-height);
+    background: rgba(0, 0, 0, 0.05);
+    border: 1px solid var(--color-border-light-tertiary);
+    border-radius: 3px;
+    padding: 0 3px;
+    text-overflow: ellipsis;
+    font-family: inherit;
+    font-size: inherit;
+    display: flex;
+    align-items: center;
+}
+
+.ftg-flex-grow {
+    flex-grow: 1;
+}
+
+.fantasy-town-generator-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+

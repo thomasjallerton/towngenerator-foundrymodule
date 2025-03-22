@@ -1,8 +1,11 @@
 import {FANTASY_TOWN_GENERATOR_ORIGIN, MODULE_ID, SETTLEMENT_ID_FLAG} from "./constants.js";
 
+export let currentSettlement = undefined
+
 export function canvasInit(canvas) {
 
     const settlementId = canvas.scene.getFlag(MODULE_ID, SETTLEMENT_ID_FLAG);
+    currentSettlement = settlementId;
     if (settlementId) {
         const src = game?.user?.isGM
             ? (FANTASY_TOWN_GENERATOR_ORIGIN + "/user/settlements/" + settlementId + "?context=foundryvtt")

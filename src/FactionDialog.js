@@ -1,7 +1,14 @@
 import {notifyPerson} from "./PersonDialog.js";
+import {
+    getFactionJournalSettings,
+    JOURNAL_TYPE,
+    journalButtons, openJournalAutomatically
+} from "./journalSettings.js";
 
-export const notifyFaction = faction => {
+export const notifyFaction = async faction => {
+    const settings = await getFactionJournalSettings(faction.id)
     new FactionDialog({id: 'faction-' + faction.id, data: faction}).render(true);
+    await openJournalAutomatically(settings)
 }
 
 $(document).on('click', '#fantasy-town-generator-faction-person', function () {
@@ -14,6 +21,12 @@ class FactionDialog extends Application {
         options.template = "modules/fantasy-town-generator-import/handlebars/faction.hbs";
         options.width = 500;
         return options;
+    }
+
+    _getHeaderButtons() {
+        const buttons = super._getHeaderButtons();
+        journalButtons(buttons, JOURNAL_TYPE.FACTIONS, this)
+        return buttons;
     }
 
     getData(options) {
