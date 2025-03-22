@@ -1,4 +1,5 @@
 import {getEntityJournalSettings, setJournalSettings} from "./journalSettings.js";
+import {MONKS_JOURNAL_MODULE_ID} from "./constants.js";
 
 export async function openJournalForm(title, entityType, entityId, newSettingsCallback) {
     const initialSettings = await getEntityJournalSettings(entityId, entityType)
@@ -71,6 +72,7 @@ class JournalForm extends FormApplication {
         return foundry.utils.mergeObject(super.getData(options), {
             journalName,
             pageOptions: this._getPageOptions(uuid),
+            showPageOptions: !game.modules.get(MONKS_JOURNAL_MODULE_ID)?.active
         });
     }
 

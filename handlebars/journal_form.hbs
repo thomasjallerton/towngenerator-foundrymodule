@@ -17,16 +17,18 @@
             {{/if}}
         </div>
         {{#if (towngenNotEmpty journalName)}}
-            <p class="fantasy-town-generator-spaced-row form-fields">
-                <label for="pageUuid" class="ftg-flex-grow">Open at page:</label>
-                <select name="pageUuid" id="pageUuid" class="ftg-flex-grow">
-                    {{#each pageOptions}}
-                        <option value="{{value}}" {{#if (eq value ../object.pageUuid)}}selected{{/if}}>
-                            {{label}}
-                        </option>
-                    {{/each}}
-                </select>
-            </p>
+            {{#if showPageOptions}}
+                <p class="fantasy-town-generator-spaced-row form-fields">
+                    <label for="pageUuid" class="ftg-flex-grow">Open at page:</label>
+                    <select name="pageUuid" id="pageUuid" class="ftg-flex-grow">
+                        {{#each pageOptions}}
+                            <option value="{{value}}" {{#if (eq value ../object.pageUuid)}}selected{{/if}}>
+                                {{label}}
+                            </option>
+                        {{/each}}
+                    </select>
+                </p>
+            {{/if}}
             <p class="fantasy-town-generator-spaced-row form-fields">
                 <label for="openAutomatically" class="ftg-flex-grow">Open automatically:</label>
                 <input type="checkbox" id="openAutomatically" name="openAutomatically" class="ftg-flex-grow"
