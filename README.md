@@ -11,6 +11,7 @@ Features:
 * Start events.
 * Show players where they are on the map.
 * Simulate the time of day.
+* Link FTG entities to journal entries (with support for Monk's Enhanced Journals)
 
 ## Examples
 
