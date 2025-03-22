@@ -3,7 +3,9 @@
     {{#if (towngenHasOpenStatus data.openStatus)}}
     <br/>{{towngenCapitalizeEnum data.openStatus}} ({{data.openingTimes.openHour}}:00 - {{data.openingTimes.closeHour}}:00)
     {{/if}}
-    <p>{{towngenFormatPeople data.subLocationsSummary.numberOfPeople}} currently here.</p>
+    {{#if (towngenNotEmpty data.subLocationsSummary.subLocations)}}
+        <p>{{towngenFormatPeople data.subLocationsSummary.numberOfPeople}} currently here.</p>
+    {{/if}}
     <div class="fantasy-town-generator-action-row">
         {{#if (towngenNotEmpty data.stock)}}
             <button name="items" id="fantasy-town-generator-building-items" data-id="{{data.id}}" data-stock="{{towngenJson data.stock}}">Items</button>

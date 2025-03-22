@@ -6,3 +6,4 @@ export const SETTLEMENT_ID_FLAG = 'settlementId';
 export const FANTASY_TOWN_GENERATOR_ORIGIN = "https://www.fantasytowngenerator.com"
 
 export const MONKS_JOURNAL_MODULE_ID = "monks-enhanced-journal";
+export const SIMPLE_CALENDAR_MODULE_ID = "foundryvtt-simple-calendar";

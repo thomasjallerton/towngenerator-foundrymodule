@@ -4,7 +4,7 @@ import {notifyBuilding} from "./src/BuildingDialog.js";
 import {notifyFactions} from "./src/FactionsDialog.js";
 import {notifyBuildings} from "./src/BuildingsDialog.js";
 import {notifyPeople} from "./src/PeopleDialog.js";
-import {FANTASY_TOWN_GENERATOR_ORIGIN, SOCKET_EVENT} from "./src/constants.js";
+import {FANTASY_TOWN_GENERATOR_ORIGIN, SIMPLE_CALENDAR_MODULE_ID, SOCKET_EVENT} from "./src/constants.js";
 import {ClientNotifications, notifyFTG, notifyOtherClients} from "./src/notifier.js";
 import {FtgEvent} from "./src/listener.js";
 import {notifyDistrict} from "./src/DistrictDialog.js";
@@ -12,6 +12,10 @@ import {notifyDistrict} from "./src/DistrictDialog.js";
 Hooks.on("renderSidebarTab", renderSidebarTab);
 Hooks.on("canvasInit", canvasInit);
 Hooks.on("canvasTearDown", canvasTearDown);
+
+/** Don't send too many updates to FTG */
+let previousSimulateHour = -1
+let previousSimulateDayOfWeek = -1
 
 Hooks.on("init", () => {
     game.socket.on(SOCKET_EVENT, ({ type, data }) => {
@@ -41,6 +45,22 @@ Hooks.on("init", () => {
             notifyFTG("PIN_DELETED", data)
         }
     });
+
+    if (game.modules.get(SIMPLE_CALENDAR_MODULE_ID)?.active) {
+        Hooks.on(SimpleCalendar.Hooks.DateTimeChange,
+            ({date}) => {
+                if (game?.user?.isGM && (date.hour !== previousSimulateHour || date.hour !== previousSimulateDayOfWeek)) {
+                    const data = {
+                        hourInDay: date.hour,
+                        dayInWeek: date.dayOfTheWeek,
+                        dayInWeekName: date.weekdays[date.dayOfTheWeek]
+                    };
+                    previousSimulateHour = date.hour;
+                    previousSimulateDayOfWeek = date.dayOfTheWeek;
+                    notifyFTG("SIMULATE_TIME", data);
+                }
+            })
+    }
 });
 
 window.addEventListener(
@@ -80,6 +100,10 @@ window.addEventListener(
             } else if (parsedData.type === FtgEvent.PIN_DELETED) {
                 // parsedData.data is a pin id
                 notifyOtherClients(ClientNotifications.PIN_DELETED, parsedData.data);
+            } else if (parsedData.type === FtgEvent.OPEN_EXTERNAL_CALENDAR) {
+                if (game.modules.get(SIMPLE_CALENDAR_MODULE_ID)?.active) {
+                    SimpleCalendar.api.showCalendar();
+                }
             }
 
             // Capture mouse move events from the fantasy-town-generator iframe so that drag controls still work
@@ -174,3 +198,4 @@ Handlebars.registerHelper('towngenFormatEnumList', function (items) {
 Handlebars.registerHelper('towngenIsGm', function () {
     return game?.user?.isGM;
 });
+

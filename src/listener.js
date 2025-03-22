@@ -77,6 +77,11 @@ export const FtgEvent = {
      * Contains the pin id.
      */
     PIN_DELETED: 'PIN_DELETED',
+    /**
+     * The 'open external calendar' button was pressed.
+     * No data.
+     */
+    OPEN_EXTERNAL_CALENDAR: 'OPEN_EXTERNAL_CALENDAR',
 }
 
 /** Tracks all active listeners, to ensure that a listener for a dialog is only created once */
