@@ -2,8 +2,6 @@
 
 Integrate [Fantasy Town Generator](https://www.fantasytowngenerator.com) settlements into Foundry Virtual Tabletop.
 
-Only supported for [premium users](https://www.patreon.com/fantasytowngenerator).
-
 Features:
 
 * Import settlements from Fantasy Town Generator, with changes kept in sync.
@@ -77,24 +75,35 @@ Activate the module in FoundryVTT.
 
 Ensure you have the module installed before doing this.
 
-#### 0. Set the FoundryVTT allowed origins
+#### 0. Set the FTG allowed iframe origins.
 
-In the premium settings, go to the Foundry VTT tab. Here you need to add the URL origin(s) that you use to access
-Foundry. To determine what this origin is, open Foundry, and press the "Import from FTG" button on the Scenes menu. A
+This module renders an iframe of Fantasy Town Generator in Foundry. For this to work properly, you need tell FTG that
+foundry is allowed to do this.
+
+Premium FTG users can set this from their premium settings, under the "iframe origins" tab. This applies to all created
+settlements.
+
+Free FTG users can set this on each settlement, in the settlement specific settings, under the "iframe origins" tab.
+This needs to be set on each individual settlement.
+
+To determine what origin to add, open Foundry, and press the "Import from FTG" button on the Scenes menu. A
 dialog will appear highlighting the origin:
 
 ![import settlement foundry](docs/allowed-origin-foundry.png)
 
-Then, just add this to the list in the premium settings:
+Then, just add this to the list in the settings:
 
 ![foundry allowed origin](docs/allowed-origin-ftg.png)
 
-This step just needs to be done once. If you can see the map, but can't interact with anything, then that usually means
-that this has been set incorrectly. Double-check the origin in foundry as described above.
+If this isn't done correctly, FTG will fail to render, and tell you what it thinks the current origin is. You can update
+the settings to use that value instead.
 
 #### 1. Allow public access for the settlement
 
-For the players to see the settlement, you need to enable public access (any level is fine).
+For the players to see the settlement, you need to enable public access. This is done in the settlement specific
+settings. Premium FTG users can set default values in the premium settings.
+
+Depending on the level of access, users will be able to interact with different things.
 
 #### 2. Export from FTG
 
