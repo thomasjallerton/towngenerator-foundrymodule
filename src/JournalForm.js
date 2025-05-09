@@ -68,7 +68,7 @@ class JournalForm extends FormApplication {
 
     getData(options) {
         const uuid = this.documentUuid;
-        const journalName = uuid ? game.journal.get(uuid).name : undefined
+        const journalName = uuid ? game.journal.get(uuid)?.name : undefined
         return foundry.utils.mergeObject(super.getData(options), {
             journalName,
             pageOptions: this._getPageOptions(uuid),
