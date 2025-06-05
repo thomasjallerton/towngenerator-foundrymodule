@@ -1,4 +1,4 @@
-import {renderSidebarTab} from "./src/renderSidebarTab.js";
+import {renderSceneTab} from "./src/renderSceneTab.js";
 import {canvasInit, canvasTearDown} from "./src/canvas.js";
 import {notifyBuilding} from "./src/BuildingDialog.js";
 import {notifyFactions} from "./src/FactionsDialog.js";
@@ -9,7 +9,7 @@ import {ClientNotifications, notifyFTG, notifyOtherClients} from "./src/notifier
 import {FtgEvent} from "./src/listener.js";
 import {notifyDistrict} from "./src/DistrictDialog.js";
 
-Hooks.on("renderSidebarTab", renderSidebarTab);
+Hooks.on("renderSceneDirectory", renderSceneTab);
 Hooks.on("canvasInit", canvasInit);
 Hooks.on("canvasTearDown", canvasTearDown);
 
@@ -61,6 +61,8 @@ Hooks.on("init", () => {
                 }
             })
     }
+
+    console.log('Initialized Fantasy Town Generator')
 });
 
 window.addEventListener(
