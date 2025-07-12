@@ -8,8 +8,16 @@ export function canvasInit(canvas) {
     currentSettlement = settlementId;
     if (settlementId) {
         let src = game?.user?.isGM
-            ? (FANTASY_TOWN_GENERATOR_ORIGIN + "/user/settlements/" + settlementId + "?context=foundryvtt")
-            : (FANTASY_TOWN_GENERATOR_ORIGIN + "/public-settlements/" + settlementId + "?context=foundryvtt")
+            ? (FANTASY_TOWN_GENERATOR_ORIGIN + "/user/settlements/")
+            : (FANTASY_TOWN_GENERATOR_ORIGIN + "/public-settlements/")
+
+        src += settlementId + "?context=foundryvtt"
+
+        const foundryApp = window.navigator.userAgent.includes("FoundryVirtualTabletop");
+        // special things need to happen for OAuth sign in, so let the FTG client know
+        if (game?.user?.isGM && foundryApp) {
+            src += '&loginCode=true'
+        }
 
         if (game.modules.get(SIMPLE_CALENDAR_MODULE_ID)?.active) {
             const date = SimpleCalendar.api.timestampToDate(SimpleCalendar.api.timestamp());
