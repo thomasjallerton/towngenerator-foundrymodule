@@ -11,7 +11,9 @@ export function canvasInit(canvas) {
             ? (FANTASY_TOWN_GENERATOR_ORIGIN + "/user/settlements/")
             : (FANTASY_TOWN_GENERATOR_ORIGIN + "/public-settlements/")
 
-        src += settlementId + "?context=foundryvtt"
+        const majorVersion = game?.version?.split('.')?.[0] ?? ''
+
+        src += settlementId + "?context=foundryvtt" + majorVersion
 
         const foundryApp = window.navigator.userAgent.includes("FoundryVirtualTabletop");
         // special things need to happen for OAuth sign in, so let the FTG client know
