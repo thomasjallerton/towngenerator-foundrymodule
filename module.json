@@ -17,6 +17,6 @@
     "minimum": "12",
     "verified": "13"
   },
-  "manifest": "https://raw.githubusercontent.com/thomasjallerton/towngenerator-foundrymodule/main/module.json",
-  "download": "https://github.com/thomasjallerton/towngenerator-foundrymodule/archive/refs/heads/master.zip"
+  "manifest": "https://raw.githubusercontent.com/thomasjallerton/towngenerator-foundrymodule/refs/tags/v2.0.4/module.json",
+  "download": "https://github.com/thomasjallerton/towngenerator-foundrymodule/archive/refs/tags/v2.0.4.zip"
 }
